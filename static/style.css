@@ -1,0 +1,280 @@
+/* Global */
+body{
+    background:#f8fafc;
+    font-family:'Inter',sans-serif;
+    color:#1e293b;
+    padding:15px;
+    padding-top:10px;
+    padding-left:50px;
+    font-family:'Inter',sans-serif;
+}
+
+/* Headings */
+h1{
+    font-family:'Poppins', sans-serif;
+    font-size:32px;
+    font-weight:500;
+    color:#1e293b;
+    margin-bottom:20px;
+}
+h2{
+    font-size: 18px;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 20px;
+}
+
+h3{
+    color:#4b5563;
+}
+
+/* Buttons */
+button{
+    background:#B9DBF6;
+    color:#0F4C81;
+    border:none;
+    padding:12px 22px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+/* Inputs */
+input{
+    height:50px;
+    border:1px solid #dbe2ea;
+    border-radius:10px;
+    padding:0 16px;
+    font-size:15px;
+    background:white;
+    width: 210px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+/* Home Page Form */
+form{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+}
+
+/* Analytics Cards */
+.stats-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.stat-card{
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+
+    height: 140px;
+    padding: 25px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card h3{
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.stat-card p{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #1e293b;
+}
+
+/* Table */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+
+th{
+    background:#687ba3;
+    color:white;
+    padding:18px;
+    font-size:16px;
+    font-weight:700;
+}
+
+td{
+    padding:18px;
+    font-size:15px;
+    color:#334155;
+}
+
+tr:nth-child(even){
+    background:#f8fafc;
+}
+
+/* Links */
+a{
+    text-decoration:none;
+}
+
+td a{
+    color:#2563eb;
+    font-weight:500;
+}
+
+/* Search Bar */
+.search-box{
+    margin:20px 0;
+}
+
+/* Dashboard Buttons */
+.action-buttons{
+    display:flex;
+    gap:10px;
+    margin-bottom:30px;
+}
+
+/* Visualization Page */
+.visual-page{
+    background:#f5f7fb;
+}
+
+/* Chart Cards */
+.chart-container{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+    margin-bottom:40px;
+    width:90%;
+    max-width:1000px;
+}
+
+.chart-container canvas{
+    width:100% !important;
+    height:450px !important;
+}
+
+/* QR Code */
+img{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+}
+
+/* Visualization Page */
+.visual-page{
+    background:#f5f7fb;
+}
+
+/* Chart Cards */
+.chart-container{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+    width:90%;
+    max-width:1000px;
+}
+
+.chart-container canvas{
+    width:100% !important;
+    height:450px !important;
+}
+
+/* Visualization Headings */
+.visual-page h1{
+    color:#1f2937;
+    margin-bottom:30px;
+}
+
+.visual-page h2{
+    color:#374151;
+    margin-top:30px;
+    margin-bottom:15px;
+}
+
+.charts-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:20px;
+    margin-top:20px;
+}
+
+.chart-container{
+    background:white;
+    padding:15px;
+    border-radius:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.chart-container canvas{
+    width:100% !important;
+    height:250px !important;
+}
+
+.country-chart{
+    grid-column: span 2;
+}
+
+.copy-btn{
+    background:#60a5fa !important;
+    color:white !important;
+}
+
+.copy-btn:hover{
+    background:#3b82f6;
+}
+
+.top-section{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.url-form{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.qr-box{
+    background:white;
+    padding:15px;
+    border-radius:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.qr-box img{
+    width:140px;
+    height:140px;
+}

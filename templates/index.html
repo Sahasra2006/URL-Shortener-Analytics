@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener Analytics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <h1>URL Shortener Analytics</h1>
+
+    <div class="top-section">
+
+      <form method="POST" class="url-form">
+
+        <input type="text" name="url" placeholder="Enter URL" required>
+
+        <input type="text"
+            name="custom_code"
+            placeholder="Custom Short Code (Optional)">
+
+        <button type="submit">
+            Shorten URL
+        </button>
+      </form>
+
+      {% if qr_image %}
+      <div class="qr-box">
+        <img src="{{ url_for('static', filename=qr_image) }}">
+      </div>
+      {% endif %}
+
+    </div>
+
+    <a href="/analytics">
+      <button type="button">View Analytics</button>
+    </a>
+
+    <a href="/visualizations">
+      <button type="button">Visualizations</button>
+    </a>
+
+    <div class="stats-container">
+
+      <div class="stat-card">
+          <h3>Total Links</h3>
+          <p>{{ total_links }}</p>
+      </div>
+
+      <div class="stat-card">
+          <h3>Total Clicks</h3>
+          <p>{{ total_clicks }}</p>
+      </div>
+
+      <div class="stat-card">
+          <h3>Top Country</h3>
+          <p>{{ top_country[0] }}</p>
+      </div>
+
+      <div class="stat-card">
+          <h3>Top Browser</h3>
+          <p>{{ top_browser[0] }}</p>
+      </div>
+
+      <div class="stat-card">
+          <h3>Top Device</h3>
+          <p>{{ top_device[0] }}</p>
+      </div>
+
+    </div>
+
+    {% if short_code %}
+    <h3>
+      Short URL:
+      <span id="shortUrl"> http://127.0.0.1:5000/{{ short_code }} </span>
+    </h3>
+
+    <button onclick="copyURL()">Copy URL</button>
+    <h3>QR Code</h3>
+
+    <img src="{{ url_for('static', filename=qr_image) }}" width="200">
+    {% endif %}
+
+    <script>
+      function copyURL() {
+        const text = document.getElementById("shortUrl").innerText;
+
+        navigator.clipboard.writeText(text);
+
+        alert("URL Copied!");
+      }
+    </script>
+  </body>
+</html>

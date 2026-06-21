@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizations Dashboard</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="visual-page">
+
+    <h1>Visualizations Dashboard</h1>
+
+    <a href="/">
+        <button type="button">Back to Home</button>
+    </a>
+
+    <div class="charts-grid">
+
+        <div class="chart-container">
+            <h2>Clicks per URL</h2>
+            <canvas id="barChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Click Distribution</h2>
+            <canvas id="pieChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Browser Analytics</h2>
+            <canvas id="browserChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Device Analytics</h2>
+            <canvas id="deviceChart"></canvas>
+        </div>
+
+        <div class="chart-container country-chart">
+            <h2>Country Analytics</h2>
+            <canvas id="countryChart"></canvas>
+        </div>
+
+    </div>
+
+    <script>
+
+        const labels = {{ labels | tojson | safe }};
+        const data = {{ data | tojson | safe }};
+
+        const browserLabels = {{ browser_labels | tojson | safe }};
+        const browserCounts = {{ browser_counts | tojson | safe }};
+
+        const deviceLabels = {{ device_labels | tojson | safe }};
+        const deviceCounts = {{ device_counts | tojson | safe }};
+
+        const countryLabels = {{ country_labels | tojson | safe }};
+        const countryCounts = {{ country_counts | tojson | safe }};
+
+        // Bar Chart
+        new Chart(
+            document.getElementById('barChart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Clicks',
+                        data: data
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            }
+        );
+
+        // Pie Chart
+        new Chart(
+            document.getElementById('pieChart'),
+            {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins:{
+                        legend:{
+                            position:'bottom'
+                        }
+                    }
+                }
+            }
+        );
+
+        // Browser Chart
+        new Chart(
+            document.getElementById('browserChart'),
+            {
+                type: 'doughnut',
+                data: {
+                    labels: browserLabels,
+                    datasets: [{
+                        data: browserCounts
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins:{
+                        legend:{
+                            position:'bottom'
+                        }
+                    }
+                }
+            }
+        );
+
+        // Device Chart
+        new Chart(
+            document.getElementById('deviceChart'),
+            {
+                type: 'pie',
+                data: {
+                    labels: deviceLabels,
+                    datasets: [{
+                        data: deviceCounts
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            }
+        );
+
+        // Country Chart
+        new Chart(
+            document.getElementById('countryChart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: countryLabels,
+                    datasets: [{
+                        label: 'Clicks',
+                        data: countryCounts
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            }
+        );
+
+    </script>
+
+</body>
+</html>
