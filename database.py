@@ -1,11 +1,9 @@
+import os
 import psycopg2
 
-conn = psycopg2.connect(
-    host="localhost",
-    database="url_analytics",
-    user="postgres",
-    password="Sahasra1230@"
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
+conn = psycopg2.connect(DATABASE_URL)
 cursor = conn.cursor()
+
 print("Database connected successfully!")
